@@ -15,18 +15,19 @@ using System.Windows.Shapes;
 namespace Theater.Windows
 {
     /// <summary>
-    /// Логика взаимодействия для Change.xaml
+    /// Логика взаимодействия для AddItemWindow.xaml
     /// </summary>
-    public partial class Change : Window
+    public partial class AddItemWindow : Window
     {
-        public Change()
+        public AddItemWindow()
         {
             InitializeComponent();
         }
 
-        private void Change_Click(object sender, RoutedEventArgs e)
+        private void Add_Click(object sender, RoutedEventArgs e)
         {
-
+            string itemName = ItemName.Name;
+            this.Close();
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Theater.Windows;
 
 namespace Theater.Pages
 {
@@ -31,7 +32,8 @@ namespace Theater.Pages
         }
         private void Add_Click(object sender, RoutedEventArgs e)
         {
-
+            AddItemWindow addItemWindow = new AddItemWindow();
+            addItemWindow.ShowDialog();
         }
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
@@ -39,7 +41,8 @@ namespace Theater.Pages
         }
         private void Update_Click(object sender, RoutedEventArgs e)
         {
-
+           ChangeWindow changeWindow = new ChangeWindow();
+            changeWindow.ShowDialog();
         }
         private void Exit_Click(object sender, RoutedEventArgs e)
         {

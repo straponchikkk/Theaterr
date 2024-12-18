@@ -23,5 +23,6 @@ namespace Theater.Windows
         {
             InitializeComponent();
         }
+
     }
 }
