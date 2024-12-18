@@ -26,6 +26,9 @@ namespace Theater.Windows
 
         private void AuthInput(object sender, RoutedEventArgs e)
         {
+            Window1 mainWindow = new Window1();
+            mainWindow.Show();
+            Close();
 
         }
 

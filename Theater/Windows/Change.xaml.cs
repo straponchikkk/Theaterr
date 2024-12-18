@@ -23,5 +23,15 @@ namespace Theater.Windows
         {
             InitializeComponent();
         }
+
+        private void Change_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Cancel_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

@@ -29,7 +29,15 @@ namespace Theater.Pages
         {
 
         }
+        private void Add_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
         private void Delete_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void Update_Click(object sender, RoutedEventArgs e)
         {
 
         }
@@ -42,5 +50,7 @@ namespace Theater.Pages
         {
 
         }
+
+       
     }
 }

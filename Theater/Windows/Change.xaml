@@ -20,7 +20,7 @@
             <TextBox  x:Name="theater" Margin="15 0"/>
 
             <StackPanel Orientation="Horizontal">
-                <Button Content="Изменить"  Margin="45 15" FontSize="14" Click="Add_Click" Width="80"/>
+                <Button Content="Изменить"  Margin="45 15" FontSize="14" Click="Change_Click" Width="80"/>
                 <Button Content="Отмена" Margin="0 15" FontSize="14" Click="Cancel_Click" Width="85"/>
             </StackPanel>
         </StackPanel>
