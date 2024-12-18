@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Theater.Windows;
+using System.Collections.ObjectModel;
+using System.Data.Entity;
 
 namespace Theater.Pages
 {
@@ -21,14 +23,21 @@ namespace Theater.Pages
     /// </summary>
     public partial class Page1 : Page
     {
+
         public Page1()
         {
             InitializeComponent();
+           
+        }
+
+        public void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+         
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
+            MessageBox.Show("Билет куплен!");
         }
         private void Add_Click(object sender, RoutedEventArgs e)
         {
@@ -46,7 +55,9 @@ namespace Theater.Pages
         }
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
-
+            System.Windows.Application.Current.Shutdown();
+            AuthWindow win = new AuthWindow();
+            win.Show();
         }
 
         private void Search_Button(object sender, RoutedEventArgs e)

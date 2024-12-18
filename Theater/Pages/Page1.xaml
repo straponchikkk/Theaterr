@@ -87,12 +87,11 @@
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
                         <StackPanel Orientation="Horizontal" Grid.Column="0">
-                            <Image Source="{Binding ImageSourse}"  Height="100" Width="50"/>
                             <StackPanel Orientation="Vertical">
                                 <TextBlock Text="{Binding Title}" FontSize="10"/>
-                                <TextBlock Text="{Binding BookId}" FontSize="10" Visibility="Hidden"/>
-                                <TextBlock Width="513" Text="{Binding Annotation}" TextWrapping="Wrap"/>
-                                <TextBlock Text="{Binding YearOfPublishing}" />
+                                <TextBlock Text="{Binding PerfomanceId}" FontSize="10" Visibility="Hidden"/>
+                                <TextBlock Width="513" Text="{Binding Duration}" TextWrapping="Wrap"/>
+                                <TextBlock Text="{Binding Genre}" />
                                 <TextBlock>
                                     <TextBlock.Text>
                                         <MultiBinding StringFormat="{}{0} {1} {2}">
