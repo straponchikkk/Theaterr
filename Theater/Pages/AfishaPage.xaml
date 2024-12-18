@@ -1,0 +1,113 @@
+﻿<Page x:Class="Theater.Pages.AfishaPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Theater.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AfishaPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="67*"/>
+            <RowDefinition Height="77*"/>
+            <RowDefinition Height="145*"/>
+            <RowDefinition Height="145*"/>
+
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="2" Grid.RowSpan="4" Margin="13,49,13,98">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Row="0" Background="Pink" Margin="63,12,60,12" Click="Add_Click">
+                <Viewbox Stretch="Uniform">
+                    <TextBlock  Text="Добавить"  Margin="5" FontSize="14"/>
+                </Viewbox>
+            </Button>
+            <Button  Background="Pink"  Margin="63,12,60,12" Grid.Row="1" Click="Delete_Click">
+                <Viewbox Stretch="Uniform">
+                    <TextBlock Text="Удалить" Margin="5" FontSize="14"/>
+                </Viewbox>
+            </Button>
+            <Button Background="Pink" Margin="63,12,60,12" Grid.Row="2" Click="Update_Click">
+                <Viewbox Stretch="Uniform">
+                    <TextBlock Text="Изменить" Margin="5" FontSize="14"/>
+                </Viewbox>
+            </Button>
+            <Button  Background="Pink" Margin="63,12,60,12" Grid.Row="3" Click="Exit_Click">
+                <Viewbox Stretch="Uniform">
+                    <TextBlock Text="Выйти" Margin="5" FontSize="14"/>
+                </Viewbox>
+            </Button>
+        </Grid>
+        <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="67*"/>
+
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button  Grid.Column="2" Margin="10,16,40,0" Click="Search_Button" Height="41" VerticalAlignment="Top">
+                <Viewbox Stretch="Uniform">
+                    <TextBlock Text="Поиск"></TextBlock>
+                </Viewbox>
+            </Button>
+            <Viewbox Stretch="Uniform" Grid.Column="0" Grid.ColumnSpan="2">
+                <TextBox x:Name="find" Width="243"  Margin="20,10,0,5" />
+            </Viewbox>
+        </Grid>
+
+        <Button  Background="Pink" Margin="152,10,10,0" Grid.Row="1" Grid.Column="1" Click="Button_Click" Height="33" VerticalAlignment="Top">
+            <Viewbox Stretch="Uniform">
+                <TextBlock Text="Купить билет" Margin="5" FontSize="10"/>
+            </Viewbox>
+        </Button>
+        <ListView x:Name="listView"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderThickness="2" BorderBrush="Gray" Margin="20,55,0,45" Grid.Row="1" Grid.RowSpan="3" Grid.Column="0" Grid.ColumnSpan="2">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Orientation="Horizontal" Grid.Column="0">
+                            <Image Source="{Binding ImageSourse}"  Height="100" Width="50"/>
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock Text="{Binding Title}" FontSize="10"/>
+                                <TextBlock Text="{Binding BookId}" FontSize="10" Visibility="Hidden"/>
+                                <TextBlock Width="513" Text="{Binding Annotation}" TextWrapping="Wrap"/>
+                                <TextBlock Text="{Binding YearOfPublishing}" />
+                                <TextBlock>
+                                    <TextBlock.Text>
+                                        <MultiBinding StringFormat="{}{0} {1} {2}">
+                                            <Binding Path="Title"/>
+                                            <Binding Path="Genre"/>
+                                            <Binding Path="Duration"/>
+                                        </MultiBinding>
+                                    </TextBlock.Text>
+                                </TextBlock>
+                            </StackPanel>
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </Grid>
+</Page>

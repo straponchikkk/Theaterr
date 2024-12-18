@@ -1,0 +1,34 @@
+﻿<Page x:Class="Theater.Pages.AuthPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Theater.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="400"
+      Title="AuthPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <!-- Для заголовка -->
+            <RowDefinition Height="*"/>
+            <!-- Для основной части -->
+            <RowDefinition Height="Auto"/>
+            <!-- Для кнопки регистрации -->
+        </Grid.RowDefinitions>
+
+        <Label Content="Авторизация" HorizontalAlignment="Center" FontSize="24" Margin="0,10"/>
+
+
+        <StackPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock  Text="Логин" HorizontalAlignment="Left"/>
+            <TextBox x:Name="Login" Height="30" Width="250" Margin="0,5" />
+            <TextBlock Text="Пароль" HorizontalAlignment="Left"/>
+            <PasswordBox x:Name="Password" Height="30" Width="250" Margin="0,5"/>
+            <Button Content="Войти" Width="120" Margin="0,10" HorizontalAlignment="Center" Click="AuthInput"/>
+            <Button Content="Войти как гость" Width="120" Margin="0,10" HorizontalAlignment="Center" Click="GuestLogin_Click"/>
+        </StackPanel>
+      
+    </Grid>
+</Page>
