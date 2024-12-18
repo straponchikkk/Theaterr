@@ -7,6 +7,25 @@
         mc:Ignorable="d"
         Title="AuthWindow" Height="450" Width="400">
     <Grid>
-        <Frame x:Name="AuthFrame" NavigationUIVisibility="Hidden" Source="/Pages/AuthPage.xaml"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <!-- Для заголовка -->
+            <RowDefinition Height="*"/>
+            <!-- Для основной части -->
+            <RowDefinition Height="Auto"/>
+            <!-- Для кнопки регистрации -->
+        </Grid.RowDefinitions>
+
+        <Label Content="Авторизация" HorizontalAlignment="Center" FontSize="24" Margin="0,10"/>
+
+
+        <StackPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock  Text="Логин" HorizontalAlignment="Left"/>
+            <TextBox x:Name="Login" Height="30" Width="250" Margin="0,5" />
+            <TextBlock Text="Пароль" HorizontalAlignment="Left"/>
+            <PasswordBox x:Name="Password" Height="30" Width="250" Margin="0,5"/>
+            <Button Content="Войти" Width="120" Margin="0,10" HorizontalAlignment="Center" Click="AuthInput"/>
+            <Button Content="Войти как гость" Width="120" Margin="0,10" HorizontalAlignment="Center" Click="GuestLogin_Click"/>
+        </StackPanel>
     </Grid>
 </Window>

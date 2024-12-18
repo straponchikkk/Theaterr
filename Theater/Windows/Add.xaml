@@ -1,0 +1,28 @@
+﻿<Window x:Class="Theater.Windows.Add"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Theater.Windows"
+        mc:Ignorable="d"
+        Title="Добавление нового спектакля" Height="350" Width="300">
+    <Grid>
+        <StackPanel x:Name="grid">
+            <Label Content="Название"  Margin="15 0"/>
+            <TextBox x:Name="title" Margin="15 0"/>
+            <Label Content="Жанр"  Margin="15 0"/>
+            <ComboBox x:Name="genre" Margin="15 0"/>
+            <Label Content="Продолжительность"  Margin="15 0" Width="275"/>
+            <TextBox x:Name="duration" Margin="15 0"/>
+            <TextBlock Text="Выберите дату:" Margin="0,5,0,5" Width="265"/>
+            <DatePicker x:Name="DatePicker" Margin="0,0,0,10" Width="270"/>
+            <Label Content="Название театра"  Margin="15 0"/>
+            <TextBox  x:Name="theater" Margin="15 0"/>
+         
+            <StackPanel Orientation="Horizontal">
+                <Button Content="Добавить"  Margin="45 15" FontSize="14" Click="Add_Click" Width="80"/>
+                <Button Content="Отмена" Margin="0 15" FontSize="14" Click="Cancel_Click" Width="85"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>

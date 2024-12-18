@@ -15,23 +15,13 @@ using System.Windows.Shapes;
 namespace Theater.Windows
 {
     /// <summary>
-    /// Логика взаимодействия для AuthWindow.xaml
+    /// Логика взаимодействия для Window1.xaml
     /// </summary>
-    public partial class AuthWindow : Window
+    public partial class Window1 : Window
     {
-        public AuthWindow()
+        public Window1()
         {
             InitializeComponent();
-        }
-
-        private void AuthInput(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void GuestLogin_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

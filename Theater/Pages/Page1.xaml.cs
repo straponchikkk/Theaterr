@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace Theater.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для AfishaPage.xaml
+    /// Логика взаимодействия для Page1.xaml
     /// </summary>
-    public partial class AfishaPage : Page
+    public partial class Page1 : Page
     {
-        public AfishaPage()
+        public Page1()
         {
             InitializeComponent();
         }
@@ -29,22 +29,10 @@ namespace Theater.Pages
         {
 
         }
-
-        private void Add_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
 
         }
-
-        private void Update_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
 
@@ -54,7 +42,5 @@ namespace Theater.Pages
         {
 
         }
-
-       
     }
 }
