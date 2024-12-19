@@ -37,5 +37,8 @@ namespace Theater
         public virtual ICollection<Scripts> Scripts { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tickets> Tickets { get; set; }
+        public DateTime DateOfStart { get; internal set; }
+        public string TheaterName { get; internal set; }
+
     }
 }
