@@ -17,6 +17,7 @@ using System.Collections.ObjectModel;
 using System.Data.Entity;
 
 
+
 namespace Theater.Pages
 {
     /// <summary>
@@ -48,10 +49,6 @@ namespace Theater.Pages
             }
 
         }
-    
-
-
-
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -66,7 +63,35 @@ namespace Theater.Pages
         }
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
+            if (PerfomanceslistView.SelectedItem == null)
+            {
+                MessageBox.Show("Не выбран объект для удаления", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
 
+            // Получаем выбранный элемент
+            var selectedPerformance = (Perfomances)PerfomanceslistView.SelectedItem;
+
+            // Удаляем выбранный элемент из базы данных
+            using (var theaterEntities = new Context())
+            {
+                var performanceToRemove = theaterEntities.Perfomances
+                    .Include(b => b.Theaters) // Если у вас есть связи с BookAuthors
+                    .FirstOrDefault(p => p.PerfomanceID == selectedPerformance.PerfomanceID);
+
+                if (performanceToRemove != null)
+                {
+                    theaterEntities.Perfomances.Remove(performanceToRemove);
+                    theaterEntities.SaveChanges();
+
+                    // Перезагружаем список представлений
+                    LoadPerfomances();
+                }
+                else
+                {
+                    MessageBox.Show("Представление не найдено", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
+            }
         }
         private void Update_Click(object sender, RoutedEventArgs e)
         {
