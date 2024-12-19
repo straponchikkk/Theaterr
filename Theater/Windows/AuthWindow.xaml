@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Theater.Windows"
         mc:Ignorable="d"
         Title="AuthWindow" Height="450" Width="400">
-    <Grid>
+    <Grid x:Name="AuthFrame">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <!-- Для заголовка -->

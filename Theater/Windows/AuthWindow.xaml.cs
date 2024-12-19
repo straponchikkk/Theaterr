@@ -61,6 +61,7 @@ namespace Theater.Windows
                     window.Hide();
                 }
 
+                MessageBox.Show("Вы успешно авторизованы!");
                 Window1 mainWindow = new Window1();
                 mainWindow.Show();
             }
@@ -73,11 +74,10 @@ namespace Theater.Windows
 
         private void GuestLogin_Click(object sender, RoutedEventArgs e)
         {
-            // Логика для входа как гость 
             MessageBox.Show("Вход как гость.");
             Window1 mainWindow = new Window1();
             mainWindow.Show();
-            // Здесь можно открыть главное окно без авторизации или выполнить другую логику 
+     
         }
     }
 }

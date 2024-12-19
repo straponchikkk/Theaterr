@@ -26,7 +26,7 @@ namespace Theater.Pages
     /// </summary>
     public partial class Page1 : Page
     {
-        private List<Perfomances> perfomances;
+        private ObservableCollection<Perfomances> perfomances;
         public Page1()
         {
             InitializeComponent();
@@ -40,8 +40,9 @@ namespace Theater.Pages
             {
                 using (var theaterEntities = new Context())
                 {
-                    perfomances = theaterEntities.Perfomances.ToList(); 
-                    PerfomanceslistView.ItemsSource = perfomances; 
+                    perfomances = new ObservableCollection <Perfomances> (theaterEntities.Perfomances); 
+                    PerfomanceslistView.ItemsSource = perfomances;
+              
                 }
             }
             catch (Exception ex)
@@ -96,17 +97,28 @@ namespace Theater.Pages
         }
         private void Update_Click(object sender, RoutedEventArgs e)
         {
-            var selectedPerformance = PerfomanceslistView.SelectedItem as Perfomances; 
-
-            if (selectedPerformance != null)
+            var selectedPerformance = PerfomanceslistView.SelectedItem as Perfomances;
+            if (selectedPerformance != null )
             {
-                var changeWindow = new ChangeWindow();
-                changeWindow.PerfomanceID = selectedPerformance.PerfomanceID; 
+        
+                ChangeWindow changeWindow = new ChangeWindow (selectedPerformance);
+
+        
+                AuthWindow authWindow = new AuthWindow
+                {
+                    Title = "Спектакль"
+                };
+
+              
                 changeWindow.Show();
+                authWindow.Closed += (s, args) =>
+                {
+                    LoadPerfomances();
+                };
             }
             else
             {
-                MessageBox.Show("Пожалуйста, выберите спектакль для обновления.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
+                System.Windows.MessageBox.Show("Пожалуйста, выберите спектакль для обновления.");
             }
         }
         private void Exit_Click(object sender, RoutedEventArgs e)
@@ -124,6 +136,7 @@ namespace Theater.Pages
         }
         private void Search_Button(object sender, RoutedEventArgs e)
         {
+           
             string search = find.Text;
 
             var searchResult = (from p in Context.DB.Perfomances
