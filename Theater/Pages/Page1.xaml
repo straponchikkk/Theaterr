@@ -88,17 +88,11 @@
                         </Grid.ColumnDefinitions>
                         <StackPanel Orientation="Horizontal" Grid.Column="0">
                             <StackPanel Orientation="Vertical">
+                                <TextBlock Text="Спектакль:" FontSize="10"/>
                                 <TextBlock Text="{Binding Title}" FontSize="10"/>
                                 <TextBlock Width="513" Text="{Binding Duration}" TextWrapping="Wrap"/>
                                 <TextBlock Text="{Binding Genre}" />
                                 <TextBlock>
-                                    <TextBlock.Text>
-                                        <MultiBinding StringFormat="{}{0} {1} {2}">
-                                            <Binding Path="Title"/>
-                                            <Binding Path="Genre"/>
-                                            <Binding Path="Duration"/>
-                                        </MultiBinding>
-                                    </TextBlock.Text>
                                 </TextBlock>
                             </StackPanel>
                         </StackPanel>
@@ -106,5 +100,6 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        <Label Content="Спектакли"  HorizontalAlignment="Left" Margin="30,0,0,0" Grid.Row="1" VerticalAlignment="Center" Width="135" Height="40" FontSize="18" FontFamily="Arial Black"/>
     </Grid>
 </Page>

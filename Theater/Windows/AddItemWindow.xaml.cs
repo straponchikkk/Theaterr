@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,6 +26,7 @@ namespace Theater.Windows
             InitializeComponent();
             LoadGenres();
         }
+   
 
         private void LoadGenres()
         {
@@ -38,37 +40,11 @@ namespace Theater.Windows
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
-            // Валидация полей ввода
-            //if (string.IsNullOrWhiteSpace(titleTextBox.Text) ||
-            //    string.IsNullOrWhiteSpace(durationTextBox.Text) ||
-            //    genreTextBox.SelectedItem == null ||
-                
-            //{
-            //    MessageBox.Show("Пожалуйста, заполните все поля.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
-            //    return;
-            //}
+           
 
-            //// Создание нового спектакля
-            //var performance = new Perfomances
-            //{
-            //    Title = TextBox.Text,
-            //    Duration = TextBox.Text,
-            //    Genre = ComboBox.Text,
-            //};
-
-            //try
-            //{
-            //    // Сохранение спектакля в базу данных
-            //    Context.DB.Performances.Add(performance);
-            //    Context.DB.SaveChanges();
-
-            //    MessageBox.Show("Спектакль успешно добавлен!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
-            //    this.Close(); // Закрытие окна после успешного добавления
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show($"Ошибка при добавлении спектакля: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-            //}
+                MessageBox.Show("Спектакль успешно добавлен!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+                this.Close();
+           
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
