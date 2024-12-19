@@ -15,10 +15,10 @@ namespace Theater
     using System.Data.Entity.Core.Objects;
     using System.Linq;
 
-    public partial class Context : DbContext
+    public partial class TheaterEntities : DbContext
     {
-        public Context()
-            : base("name=Context")
+        public TheaterEntities()
+            : base("name=TheaterEntities")
         {
         }
 
@@ -37,6 +37,7 @@ namespace Theater
         public virtual DbSet<Scripts> Scripts { get; set; }
         public virtual DbSet<Theaters> Theaters { get; set; }
         public virtual DbSet<Tickets> Tickets { get; set; }
+
 
     }
 }

@@ -36,7 +36,7 @@ namespace Theater.Pages
         {
             try
             {
-                using (var theaterEntities = new TheaterEntities())
+                using (var theaterEntities = new Context())
                 {
                     perfomances = theaterEntities.Perfomances.ToList(); 
                     PerfomanceslistView.ItemsSource = perfomances; 

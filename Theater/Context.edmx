@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище TheaterModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище TheaterModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Actors">
           <Key>
             <PropertyRef Name="ActorID" />
@@ -31,6 +31,7 @@
           <Property Name="Surname" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="Email" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="Phone" Type="numeric" Precision="30" Scale="0" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Directors">
           <Key>
@@ -105,6 +106,7 @@
           <Property Name="Price" Type="numeric" Precision="30" Scale="0" />
           <Property Name="DateOfStart" Type="date" Nullable="false" />
           <Property Name="PerfomanceID" Type="int" />
+          <Property Name="Row" Type="numeric" Precision="18" Scale="0" />
         </EntityType>
         <Association Name="FK__Actors_Pe__Actor__5070F446">
           <End Role="Actors" Type="Self.Actors" Multiplicity="0..1" />
@@ -294,8 +296,7 @@
             <End Role="Tickets" EntitySet="Tickets" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="TheaterModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -330,6 +331,7 @@
           <Property Name="Email" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Phone" Type="Decimal" Precision="30" Scale="0" Nullable="false" />
           <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__Audience__47DBAE45" FromRole="Audiences" ToRole="Orders" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Directors">
           <Key>
@@ -417,6 +419,7 @@
           <Property Name="PerfomanceID" Type="Int32" />
           <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__TicketID__46E78A0C" FromRole="Tickets" ToRole="Orders" />
           <NavigationProperty Name="Perfomances" Relationship="Self.FK__Tickets__Perfoma__4222D4EF" FromRole="Tickets" ToRole="Perfomances" />
+          <Property Name="Row" Type="Decimal" Precision="18" Scale="0" />
         </EntityType>
         <Association Name="FK__Actors_Pe__Actor__5070F446">
           <End Role="Actors" Type="Self.Actors" Multiplicity="0..1" />
@@ -644,6 +647,7 @@
           <EntitySetMapping Name="Audiences">
             <EntityTypeMapping TypeName="TheaterModel.Audiences">
               <MappingFragment StoreEntitySet="Audiences">
+                <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="AudienceID" ColumnName="AudienceID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Surname" ColumnName="Surname" />
@@ -726,6 +730,7 @@
           <EntitySetMapping Name="Tickets">
             <EntityTypeMapping TypeName="TheaterModel.Tickets">
               <MappingFragment StoreEntitySet="Tickets">
+                <ScalarProperty Name="Row" ColumnName="Row" />
                 <ScalarProperty Name="TicketID" ColumnName="TicketID" />
                 <ScalarProperty Name="Place" ColumnName="Place" />
                 <ScalarProperty Name="Price" ColumnName="Price" />

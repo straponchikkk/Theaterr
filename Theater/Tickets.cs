@@ -25,6 +25,7 @@ namespace Theater
         public Nullable<decimal> Price { get; set; }
         public System.DateTime DateOfStart { get; set; }
         public Nullable<int> PerfomanceID { get; set; }
+        public Nullable<decimal> Row { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Orders> Orders { get; set; }
