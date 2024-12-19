@@ -68,8 +68,8 @@
                     <TextBlock Text="Поиск"></TextBlock>
                 </Viewbox>
             </Button>
-            <Viewbox Stretch="Uniform" Grid.Column="0" Grid.ColumnSpan="2">
-                <TextBox x:Name="find" Width="243"  Margin="20,10,0,5" />
+            <Viewbox Stretch="Uniform" Grid.Column="0" Grid.ColumnSpan="3" Margin="0,0,177,-2">
+                <TextBox FontFamily="Century gothic" FontWeight="Normal"  x:Name="find" Width="243"  Margin="20,10,0,5" TextChanged="Find_TextChanged"/>
             </Viewbox>
         </Grid>
 

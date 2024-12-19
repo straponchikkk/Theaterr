@@ -87,7 +87,7 @@ namespace Theater.Windows
      
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
-            this.Close(); // Закрытие окна без сохранения изменений
+            this.Close(); 
         }
     }
    

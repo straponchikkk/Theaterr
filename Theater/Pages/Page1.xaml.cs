@@ -18,6 +18,7 @@ using System.Data.Entity;
 
 
 
+
 namespace Theater.Pages
 {
     /// <summary>
@@ -72,11 +73,11 @@ namespace Theater.Pages
             // Получаем выбранный элемент
             var selectedPerformance = (Perfomances)PerfomanceslistView.SelectedItem;
 
-            // Удаляем выбранный элемент из базы данных
+            
             using (var theaterEntities = new Context())
             {
                 var performanceToRemove = theaterEntities.Perfomances
-                    .Include(b => b.Theaters) // Если у вас есть связи с BookAuthors
+                    .Include(b => b.Theaters) 
                     .FirstOrDefault(p => p.PerfomanceID == selectedPerformance.PerfomanceID);
 
                 if (performanceToRemove != null)
@@ -84,7 +85,7 @@ namespace Theater.Pages
                     theaterEntities.Perfomances.Remove(performanceToRemove);
                     theaterEntities.SaveChanges();
 
-                    // Перезагружаем список представлений
+                 
                     LoadPerfomances();
                 }
                 else
@@ -95,8 +96,18 @@ namespace Theater.Pages
         }
         private void Update_Click(object sender, RoutedEventArgs e)
         {
-           ChangeWindow changeWindow = new ChangeWindow();
-            changeWindow.ShowDialog();
+            var selectedPerformance = PerfomanceslistView.SelectedItem as Perfomances; 
+
+            if (selectedPerformance != null)
+            {
+                var changeWindow = new ChangeWindow();
+                changeWindow.PerfomanceID = selectedPerformance.PerfomanceID; 
+                changeWindow.Show();
+            }
+            else
+            {
+                MessageBox.Show("Пожалуйста, выберите спектакль для обновления.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
         }
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
@@ -104,10 +115,22 @@ namespace Theater.Pages
             AuthWindow win = new AuthWindow();
             win.Show();
         }
-
+        private void Find_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string search = find.Text; if (string.IsNullOrEmpty(search))
+            {
+                LoadPerfomances();
+            }
+        }
         private void Search_Button(object sender, RoutedEventArgs e)
         {
+            string search = find.Text;
 
+            var searchResult = (from p in Context.DB.Perfomances
+                                where p.Genre.Contains(search) || p.Title.Contains(search) || p.Duration.Contains(search) // изменил на ||
+                                select new { p.Title, p.Duration, p.Genre });
+
+            PerfomanceslistView.ItemsSource = searchResult.ToList();
         }
     }
 }
