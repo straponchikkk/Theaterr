@@ -16,6 +16,7 @@ using Theater.Windows;
 using System.Collections.ObjectModel;
 using System.Data.Entity;
 
+
 namespace Theater.Pages
 {
     /// <summary>
@@ -23,16 +24,30 @@ namespace Theater.Pages
     /// </summary>
     public partial class Page1 : Page
     {
-
+        private List<Perfomances> perfomances;
         public Page1()
         {
             InitializeComponent();
-           
+            LoadPerfomances();
+
         }
 
-        public void Page_Loaded(object sender, RoutedEventArgs e)
+
+        public void LoadPerfomances()
         {
-         
+            try
+            {
+                using (var theaterEntities = new TheaterEntities())
+                {
+                    perfomances = theaterEntities.Perfomances.ToList(); // Загружаем все отзывы из базы данных
+                    PerfomanceslistView.ItemsSource = perfomances; // Устанавливаем источник данных для ListView
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка при загрузке данных: {ex.Message}");
+            }
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

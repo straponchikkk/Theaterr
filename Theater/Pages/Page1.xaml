@@ -78,7 +78,7 @@
                 <TextBlock Text="Купить билет" Margin="5" FontSize="10"/>
             </Viewbox>
         </Button>
-        <ListView x:Name="listView"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderThickness="2" BorderBrush="Gray" Margin="20,55,0,45" Grid.Row="1" Grid.RowSpan="3" Grid.Column="0" Grid.ColumnSpan="2">
+        <ListView x:Name="PerfomanceslistView"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderThickness="2" BorderBrush="Gray" Margin="20,55,0,45" Grid.Row="1" Grid.RowSpan="3" Grid.Column="0" Grid.ColumnSpan="2">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid>

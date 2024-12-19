@@ -11,6 +11,7 @@ namespace Theater
 {
     using System;
     using System.Collections.Generic;
+    using System.Data.Entity;
     
     public partial class Perfomances
     {
