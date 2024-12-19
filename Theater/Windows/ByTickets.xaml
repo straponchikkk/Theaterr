@@ -5,11 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Theater.Windows"
         mc:Ignorable="d"
-        Title="ByTickets" Height="420" Width="700">
+        Title="ByTickets" Height="420" Width="700" Loaded="Page_Loaded">
     <Grid>
         <StackPanel x:Name="ByTick" Margin="0,10,0,-10">
-            <TextBlock Text="Билеты:" FontWeight="Bold" FontSize="16" Margin="0,0,0,10" Width="480"/>
-
+            <TextBlock Text="Билеты:" FontWeight="Bold" FontSize="16" Margin="0,0,0,10" Width="675"/>
             <ListView x:Name="TicketListView" Height="168">
                 <ListView.View>
                     <GridView>

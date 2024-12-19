@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,8 +11,8 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
-
 namespace Theater.Windows
 {
     /// <summary>
@@ -26,55 +27,29 @@ namespace Theater.Windows
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            LoadTicketData();
+          
+                Context.DB.Perfomances.Load();
+                Context.DB.Tickets.Load();
+                Context.DB.Theaters.Load();
+            var perfomances = Context.DB.Perfomances.Local.ToList();
+            var tickets = Context.DB.Tickets.Local.ToList();
+            var theaters = Context.DB.Theaters.Local.ToList();
+            var result = from per in perfomances
+                         join tick in tickets on per.PerfomanceID equals tick.PerfomanceID
+                         join theat in theaters on per.TheaterID equals theat.TheaterID
+                         select new
+                             {
+                                 per.Title,
+                                 tick.Row,
+                                 tick.Price,
+                                 tick.Place,
+                                 tick.DateOfStart,
+                                 theat.Name
+                             };
+            TicketListView.ItemsSource = result.ToList();
+          
         }
 
-        private void LoadTicketData()
-        {
-            try
-            {
-                // Загружаем данные из базы данных
-                var performances = Context.DB.Perfomances.ToList();
-                var theaters = Context.DB.Theaters.ToList();
-                var tickets = Context.DB.Tickets.ToList();
-
-                // Создаем список для хранения результатов
-                var result = new List<TicketInfo>();
-
-                // Проходим по каждому представлению (перфомансу)
-                foreach (var performance in performances)
-                {
-                    // Находим соответствующий театр
-                    var theater = theaters.FirstOrDefault(t => t.TheaterID == performance.TheaterID);
-                    if (theater != null)
-                    {
-                        // Находим все билеты для текущего представления
-                        var performanceTickets = tickets.Where(t => t.PerfomanceID == performance.PerfomanceID);
-
-                        foreach (var ticket in performanceTickets)
-                        {
-                            // Добавляем информацию о представлении, театре и билете в результат
-                            result.Add(new TicketInfo
-                            {
-                                Title = performance.Title,
-                                Name = theater.Name,
-                                DateOfStart = ticket.DateOfStart,
-                                Row = (int)ticket.Row,
-                                Place = (int)ticket.Place,
-                                Price = (decimal)ticket.Price
-                            });
-                        }
-                    }
-                }
-
-                // Устанавливаем источник данных для ListView
-                TicketListView.ItemsSource = result;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Ошибка при загрузке данных: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
 
         private void CompletePurchase_Click(object sender, RoutedEventArgs e)
         {
@@ -126,16 +101,6 @@ namespace Theater.Windows
         }
     }
 
-    // Класс для хранения информации о билете
-    public class TicketInfo
-    {
-        public string Title { get; set; }
-        public string Name { get; set; }
-        public DateTime DateOfStart { get; set; }
-        public int Row { get; set; }
-        public int Place { get; set; }
-        public decimal Price { get; set; }
-    }
 }
 
 
