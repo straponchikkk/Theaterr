@@ -29,18 +29,17 @@ namespace Theater.Pages
         {
             InitializeComponent();
             LoadPerfomances();
+   
 
         }
-
-
-        public void LoadPerfomances()
+            public void LoadPerfomances()
         {
             try
             {
                 using (var theaterEntities = new TheaterEntities())
                 {
-                    perfomances = theaterEntities.Perfomances.ToList(); // Загружаем все отзывы из базы данных
-                    PerfomanceslistView.ItemsSource = perfomances; // Устанавливаем источник данных для ListView
+                    perfomances = theaterEntities.Perfomances.ToList(); 
+                    PerfomanceslistView.ItemsSource = perfomances; 
                 }
             }
             catch (Exception ex)
@@ -49,10 +48,14 @@ namespace Theater.Pages
             }
 
         }
+ 
+
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Билет куплен!");
+            ByTickets byTickets = new ByTickets();
+            byTickets.ShowDialog();
+
         }
         private void Add_Click(object sender, RoutedEventArgs e)
         {
@@ -79,7 +82,5 @@ namespace Theater.Pages
         {
 
         }
-
-       
     }
 }

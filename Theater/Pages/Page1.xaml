@@ -89,7 +89,6 @@
                         <StackPanel Orientation="Horizontal" Grid.Column="0">
                             <StackPanel Orientation="Vertical">
                                 <TextBlock Text="{Binding Title}" FontSize="10"/>
-                                <TextBlock Text="{Binding PerfomanceId}" FontSize="10" Visibility="Hidden"/>
                                 <TextBlock Width="513" Text="{Binding Duration}" TextWrapping="Wrap"/>
                                 <TextBlock Text="{Binding Genre}" />
                                 <TextBlock>
