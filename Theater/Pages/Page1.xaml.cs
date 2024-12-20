@@ -31,18 +31,18 @@ namespace Theater.Pages
         {
             InitializeComponent();
             LoadPerfomances();
-   
+
 
         }
-            public void LoadPerfomances()
+        public void LoadPerfomances()
         {
             try
             {
                 using (var theaterEntities = new Context())
                 {
-                    perfomances = new ObservableCollection <Perfomances> (theaterEntities.Perfomances); 
+                    perfomances = new ObservableCollection<Perfomances>(theaterEntities.Perfomances);
                     PerfomanceslistView.ItemsSource = perfomances;
-              
+
                 }
             }
             catch (Exception ex)
@@ -74,11 +74,11 @@ namespace Theater.Pages
             // Получаем выбранный элемент
             var selectedPerformance = (Perfomances)PerfomanceslistView.SelectedItem;
 
-            
+
             using (var theaterEntities = new Context())
             {
                 var performanceToRemove = theaterEntities.Perfomances
-                    .Include(b => b.Theaters) 
+                    .Include(b => b.Theaters)
                     .FirstOrDefault(p => p.PerfomanceID == selectedPerformance.PerfomanceID);
 
                 if (performanceToRemove != null)
@@ -86,7 +86,7 @@ namespace Theater.Pages
                     theaterEntities.Perfomances.Remove(performanceToRemove);
                     theaterEntities.SaveChanges();
 
-                 
+
                     LoadPerfomances();
                 }
                 else
@@ -98,18 +98,18 @@ namespace Theater.Pages
         private void Update_Click(object sender, RoutedEventArgs e)
         {
             var selectedPerformance = PerfomanceslistView.SelectedItem as Perfomances;
-            if (selectedPerformance != null )
+            if (selectedPerformance != null)
             {
-        
-                ChangeWindow changeWindow = new ChangeWindow (selectedPerformance);
 
-        
+                ChangeWindow changeWindow = new ChangeWindow(selectedPerformance);
+
+
                 AuthWindow authWindow = new AuthWindow
                 {
                     Title = "Спектакль"
                 };
 
-              
+
                 changeWindow.Show();
                 authWindow.Closed += (s, args) =>
                 {
@@ -136,7 +136,7 @@ namespace Theater.Pages
         }
         private void Search_Button(object sender, RoutedEventArgs e)
         {
-           
+
             string search = find.Text;
 
             var searchResult = (from p in Context.DB.Perfomances
@@ -144,6 +144,12 @@ namespace Theater.Pages
                                 select new { p.Title, p.Duration, p.Genre });
 
             PerfomanceslistView.ItemsSource = searchResult.ToList();
+        }
+
+        private void UserList_Click(object sender, RoutedEventArgs e)
+        {
+            UserList userList = new UserList();
+            userList.ShowDialog();
         }
     }
 }

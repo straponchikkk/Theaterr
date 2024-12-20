@@ -21,7 +21,7 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Grid Grid.Column="2" Grid.RowSpan="4" Margin="13,49,13,98">
+        <Grid Grid.Column="2" Grid.RowSpan="4" Margin="13,49,13,110">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
@@ -47,9 +47,14 @@
                     <TextBlock Text="Изменить" Margin="5" FontSize="14"/>
                 </Viewbox>
             </Button>
-            <Button  Background="Pink" Margin="63,12,60,12" Grid.Row="3" Click="Exit_Click">
+            <Button  Background="Pink" Margin="109,114,15,-90" Grid.Row="3" Click="Exit_Click">
                 <Viewbox Stretch="Uniform">
                     <TextBlock Text="Выйти" Margin="5" FontSize="14"/>
+                </Viewbox>
+            </Button>
+            <Button Background="Pink" Margin="65,14,60,10" Grid.Row="3" Click="UserList_Click">
+                <Viewbox Stretch="Uniform">
+                    <TextBlock Text="Список пользователей" Margin="5" FontSize="14"/>
                 </Viewbox>
             </Button>
         </Grid>
