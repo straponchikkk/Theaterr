@@ -31,12 +31,15 @@ namespace Theater.Windows
                 Context.DB.Perfomances.Load();
                 Context.DB.Tickets.Load();
                 Context.DB.Theaters.Load();
+                Context.DB.Scripts.Load();
             var perfomances = Context.DB.Perfomances.Local.ToList();
             var tickets = Context.DB.Tickets.Local.ToList();
             var theaters = Context.DB.Theaters.Local.ToList();
+            var scripts = Context.DB.Scripts.Local.ToList();
             var result = from per in perfomances
                          join tick in tickets on per.PerfomanceID equals tick.PerfomanceID
                          join theat in theaters on per.TheaterID equals theat.TheaterID
+                         join scr in scripts on per.PerfomanceID equals scr.PerfomanceID
                          select new
                              {
                                  per.Title,
@@ -44,7 +47,8 @@ namespace Theater.Windows
                                  tick.Price,
                                  tick.Place,
                                  tick.DateOfStart,
-                                 theat.Name
+                                 theat.Name,
+                                 scr.Description
                              };
             TicketListView.ItemsSource = result.ToList();
           
